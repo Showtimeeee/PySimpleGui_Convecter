@@ -5,7 +5,7 @@ import PySimpleGUI as sg
 maket = [
     [
         sg.Input(key='-INPUT-'),
-        sg.Spin(['км в мили', 'кг в фунты'], key='-UNITS-'),
+        sg.Spin(['км в мили', 'кг в фунты', 'сек в мин', 'мин в час', ], key='-UNITS-'),
         sg.Button('START', key='-CONVERT-')
     ],
     [sg.Text('Введите число', key='-OUTPUT-')]
@@ -20,6 +20,7 @@ while True:
 
     if event == '-CONVERT-':
         input_value = values['-INPUT-']
+
         if input_value.isnumeric():
             match values['-UNITS-']:
                 case 'км в мили':
@@ -28,8 +29,15 @@ while True:
                 case 'кг в фунты':
                     output = (float(input_value) * 2.20462,2)
                     output_string = f'{input_value} в кг {output} фунтов.'
+                case 'сек в мин':
+                    output = (float(input_value) / 60)
+                    output_string = f'{input_value} в сек {output} мин.'
+                case 'мин в час':
+                    output = (float(input_value) / 60)
+                    output_string = f'{input_value} в мин {output} часов.'
 
             window['-OUTPUT-'].update(output_string)
+
         else:
             window['-OUTPUT-'].update('Введите занчение')
 

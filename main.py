@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
 
-# enable_events=True включает собыите с кнопки
+sg.theme('reds')
 maket = [
     [
         sg.Input(key='-INPUT-'),
@@ -25,16 +25,16 @@ while True:
             match values['-UNITS-']:
                 case 'км в мили':
                     output = (float(input_value) * 0.6214,2)
-                    output_string = f'{input_value} в км {output} миль.'
+                    output_string = f'{input_value} км {output} миль.'
                 case 'кг в фунты':
                     output = (float(input_value) * 2.20462,2)
-                    output_string = f'{input_value} в кг {output} фунтов.'
+                    output_string = f'{input_value} кг {output} фунтов.'
                 case 'сек в мин':
                     output = (float(input_value) / 60)
-                    output_string = f'{input_value} в сек {output} мин.'
+                    output_string = f'{input_value} сек {output} мин.'
                 case 'мин в час':
                     output = (float(input_value) / 60)
-                    output_string = f'{input_value} в мин {output} часов.'
+                    output_string = f'{input_value} мин {output} часов.'
 
             window['-OUTPUT-'].update(output_string)
 
